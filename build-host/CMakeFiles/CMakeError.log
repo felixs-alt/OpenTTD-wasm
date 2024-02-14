@@ -1,0 +1,29 @@
+Performing C++ SOURCE FILE Test XAUDIO2_FOUND failed with the following output:
+Change Dir: /mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build-host/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b4e6d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b4e6d.dir/build.make CMakeFiles/cmTC_b4e6d.dir/build
+gmake[1]: Entering directory '/mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build-host/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b4e6d.dir/src.cxx.o
+/usr/bin/c++ -DXAUDIO2_FOUND  -std=c++17 -o CMakeFiles/cmTC_b4e6d.dir/src.cxx.o -c /mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build-host/CMakeFiles/CMakeTmp/src.cxx
+/mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build-host/CMakeFiles/CMakeTmp/src.cxx:3:14: fatal error: windows.h: No such file or directory
+    3 |     #include <windows.h>
+      |              ^~~~~~~~~~~
+compilation terminated.
+gmake[1]: *** [CMakeFiles/cmTC_b4e6d.dir/build.make:78: CMakeFiles/cmTC_b4e6d.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build-host/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_b4e6d/fast] Error 2
+
+
+Source file was:
+
+    #include <cstdio>
+    #include <windows.h>
+
+    #undef NTDDI_VERSION
+    #undef _WIN32_WINNT
+
+    #define NTDDI_VERSION    NTDDI_WIN8
+    #define _WIN32_WINNT     _WIN32_WINNT_WIN8
+
+    #include <xaudio2.h>
+    int main() { printf("%s\n", XAUDIO2_DLL_A); return 0; }

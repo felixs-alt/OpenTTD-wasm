@@ -1,0 +1,87 @@
+The target system is: Emscripten - 1 - x86
+The host system is: Linux - 5.15.133.1-microsoft-standard-WSL2 - x86_64
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_833f7/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_833f7.dir/build.make CMakeFiles/cmTC_833f7.dir/build
+gmake[1]: Entering directory '/mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_833f7.dir/src.c.o
+/emsdk/upstream/emscripten/emcc -DCMAKE_HAVE_LIBC_PTHREAD   -MD -MT CMakeFiles/cmTC_833f7.dir/src.c.o -MF CMakeFiles/cmTC_833f7.dir/src.c.o.d -o CMakeFiles/cmTC_833f7.dir/src.c.o -c /mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_833f7.js
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_833f7.dir/link.txt --verbose=1
+/emsdk/upstream/emscripten/emcc  -rdynamic  @CMakeFiles/cmTC_833f7.dir/objects1.rsp -o cmTC_833f7.js 
+cache:INFO: generating system asset: symbol_lists/b1233c7e244324ac18ced47dc5f862e44f7f18c4.json... (this will be cached in "/emsdk/upstream/emscripten/cache/symbol_lists/b1233c7e244324ac18ced47dc5f862e44f7f18c4.json" for subsequent builds)
+cache:INFO:  - ok
+gmake[1]: Leaving directory '/mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Performing C++ SOURCE FILE Test HAVE_CXX_ATOMICS_WITHOUT_LIB succeeded with the following output:
+Change Dir: /mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_45aad/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_45aad.dir/build.make CMakeFiles/cmTC_45aad.dir/build
+gmake[1]: Entering directory '/mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_45aad.dir/src.cxx.o
+/emsdk/upstream/emscripten/em++ -DHAVE_CXX_ATOMICS_WITHOUT_LIB  -std=c++17 -std=c++17 -MD -MT CMakeFiles/cmTC_45aad.dir/src.cxx.o -MF CMakeFiles/cmTC_45aad.dir/src.cxx.o.d -o CMakeFiles/cmTC_45aad.dir/src.cxx.o -c /mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_45aad.js
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45aad.dir/link.txt --verbose=1
+/emsdk/upstream/emscripten/em++   -std=c++17  -rdynamic  @CMakeFiles/cmTC_45aad.dir/objects1.rsp -o cmTC_45aad.js 
+gmake[1]: Leaving directory '/mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#include <atomic>
+std::atomic<int> x;
+std::atomic<short> y;
+std::atomic<char> z;
+int main() {
+  ++z;
+  ++y;
+  return ++x;
+}
+
+Performing C++ SOURCE FILE Test HAVE_CXX_ATOMICS64_WITHOUT_LIB succeeded with the following output:
+Change Dir: /mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_204f7/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_204f7.dir/build.make CMakeFiles/cmTC_204f7.dir/build
+gmake[1]: Entering directory '/mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_204f7.dir/src.cxx.o
+/emsdk/upstream/emscripten/em++ -DHAVE_CXX_ATOMICS64_WITHOUT_LIB  -std=c++17 -std=c++17 -MD -MT CMakeFiles/cmTC_204f7.dir/src.cxx.o -MF CMakeFiles/cmTC_204f7.dir/src.cxx.o.d -o CMakeFiles/cmTC_204f7.dir/src.cxx.o -c /mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_204f7.js
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_204f7.dir/link.txt --verbose=1
+/emsdk/upstream/emscripten/em++  -std=c++17  -rdynamic  @CMakeFiles/cmTC_204f7.dir/objects1.rsp -o cmTC_204f7.js 
+gmake[1]: Leaving directory '/mnt/c/Users/felix/OneDrive/Documents/GitHub/OpenTTD/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+
+#include <atomic>
+#include <cstdint>
+std::atomic<uint64_t> x (0);
+int main() {
+  uint64_t i = x.load(std::memory_order_relaxed);
+  (void)i;
+  return 0;
+}
+
